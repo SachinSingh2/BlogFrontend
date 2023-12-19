@@ -1,0 +1,22 @@
+/* Default styles for larger screens */
+.CreatePost {
+    max-width: 100%; /* Ensure the container can't be wider than its parent */
+    text-align: center; /* Optional: Center the image horizontally */
+  }
+  
+  .CreatePost img {
+    width: 100%; /* Set the maximum width for the image */
+    height: 300px; /* Maintain the image's aspect ratio */
+    display: block; /* Remove extra spacing below the image */
+    margin: 0 auto; /* Center the image horizontally (optional) */
+    object-fit: cover;
+  }
+  
+  /* Media query for screens smaller than 768px */
+  @media (max-width: 768px) {
+    .CreatePost img {
+      height: auto; /* Allow the image to adjust its height based on its aspect ratio */
+      max-height: 300px; /* Set a maximum height if needed */
+    }
+  }
+  

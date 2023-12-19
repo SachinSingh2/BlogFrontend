@@ -1,0 +1,64 @@
+.bg-image {
+    background-image: url('https://images.unsplash.com/photo-1484807352052-23338990c6c6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    height: 500px; /* You can adjust the height as needed */
+    /* Additional styles for the banner container can go here */
+  }
+
+.BlogHeading{
+    margin: 70px auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 100px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 10px;
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+      0px -4px 10px rgba(255,255,255,0.3);
+}
+
+.BlogSubHeading{
+    margin: 20px auto;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+      0px -4px 10px rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+    .bg-image {
+      height: 500px; /* Adjust the height as needed */
+      background-size: cover; /* You can change this to 'contain' or other values as per your design */
+    }
+
+    .BlogHeading{
+        margin: 120px auto;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 65px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+        letter-spacing: 5px;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+          0px -4px 10px rgba(255,255,255,0.3);
+    }
+
+
+    .BlogSubHeading{
+        margin: 20px auto;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 26px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+        letter-spacing: 1px;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+          0px -4px 10px rgba(255,255,255,0.3);
+    }
+
+  }

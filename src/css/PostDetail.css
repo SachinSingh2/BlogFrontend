@@ -1,0 +1,62 @@
+
+.PostDetailContainer{
+  margin-top: 150px;
+}
+
+.ProfileDiv{
+  width: 10%;
+}
+
+
+
+
+.PostDetailUser{
+color: black;
+font-family: 'Libre Baskerville';
+}
+
+.PostDetailUserAbout{
+letter-spacing: 1px;
+}
+
+
+.SecondImg{
+  object-fit: contain;
+}
+
+
+/* Media query for the small devices */
+@media (max-width: 768px) {
+
+  .PostDetailContainer{
+    margin-top: 100px;
+  }
+
+  .dateCategoryBox{
+    justify-content: space-between;
+    font-family: monospace;
+    width: 100%;
+  }
+
+  .PostDetailContainerImage {
+    object-fit: cover;
+  }
+  .ProfileDiv{
+    width: 100%;
+    text-align: center;
+  }
+
+  .PostDetailUser{
+    color: black;
+    text-align: center;
+    font-family: 'Libre Baskerville';
+    }
+    
+    .PostDetailUserAbout{
+    letter-spacing: 1px;
+    text-align: center;
+    }
+    
+
+
+}

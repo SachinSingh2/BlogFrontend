@@ -1,0 +1,80 @@
+.MainHeading{
+    font-family: 'Libre Baskerville';
+    font-weight: 900;
+    color: #121212;
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3),  0px -4px 10px rgba(255,255,255,0.3);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.AboutImage{
+    object-fit: contain;
+    width: 100%;
+}
+
+.TextBox1{
+    color: black;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 30px 60px;
+    text-align: start;
+    font-family:"Metrophobic";
+}
+
+.TextBox2{
+    font-size: 17px;
+    padding: 10px 60px;
+    text-align: start;
+    font-family:"Metrophobic";
+}
+
+
+.TextBox3{
+    padding: 10px 60px;
+    margin-top: 20px;
+}
+.TextBox3 h2{
+    font-family: 'Libre Baskerville';
+    color: black;
+}
+
+
+
+
+
+
+/* --------------------------------------------Media Quert for responsive */
+
+@media  (width <= 786px) {
+    .MainHeading{
+        font-family: 'Libre Baskerville';
+        font-weight: 900;
+        color: #121212;
+        text-shadow: 2px 7px 5px rgba(0,0,0,0.3),  0px -4px 10px rgba(255,255,255,0.3);
+        text-align: center;
+        letter-spacing: 1px;
+    }
+    
+    
+    .TextBox1{
+        color: black;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 20px 20px;
+        text-align: start;
+        font-family:"Metrophobic";
+    }
+
+
+    .TextBox2{
+        font-size: 17px;
+        padding: 20px 20px;
+        text-align: start;
+        font-family:"Metrophobic";
+    }
+
+    .TextBox3{
+        padding: 20px 20px;
+        margin-top: 20px;
+    }
+}

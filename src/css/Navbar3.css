@@ -1,0 +1,41 @@
+
+nav{
+    background-color: black !important;
+}
+
+
+.Logo{
+    color:White;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.NavigationBar a {
+    color: gray;
+    font-size: 15px;
+    margin-right: 40px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    /* margin: 0px 20px; */
+}
+
+.NavigationBar a:focus {
+    color: White;
+}
+
+
+
+
+
+@media (width <= 900px) {
+    .NavigationBar{
+        display: none;
+    }
+    .Logo{
+        display: none;
+    }
+    .UserName{
+        display: none;
+    }
+
+
+}

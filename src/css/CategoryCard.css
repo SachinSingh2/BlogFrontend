@@ -1,0 +1,12 @@
+/* Default styling for the card */
+.card.CategoryCard {
+    width: 15rem;
+  }
+  
+  /* Media query for screens smaller than 768px */
+  @media (max-width: 768px) {
+    .card.CategoryCard {
+      width: 100%; /* Set the card width to 100% for smaller devices */
+    }
+  }
+  

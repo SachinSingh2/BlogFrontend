@@ -1,0 +1,66 @@
+.ContactHeading{
+    color: black;
+    text-align: center;
+    margin: 40px 0px;
+    font-family: 'Libre Baskerville';
+    font-size: 50px !important;
+}
+
+
+.ContactText1{
+    color: black;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 50px 120px;
+    text-align: start;
+    font-family:"Metrophobic";
+}
+
+.ContactText2{
+    font-size: 17px;
+    padding: 0px 120px;
+    text-align: start;
+    font-family:"Metrophobic";
+}
+
+
+.ContactText-3{
+    padding: 100px 60px;  
+}
+
+.ContactText-3{
+    padding: 100px 60px;  
+}
+ h2{
+    color: black;
+    font-family: 'Libre Baskerville';
+ }
+
+
+
+
+
+
+/* --------------------------------------------Media Quert for responsive */
+
+@media  (width <= 786px) {
+    
+    .ContactText1{
+        color: black;
+        font-weight: 600;
+        font-size: 12px;
+        padding: 20px 20px;
+        text-align: start;
+        font-family:"Metrophobic";
+    }
+
+ .ContactText2{
+    font-size: 17px;
+    padding: 10px 20px;
+    text-align: start;
+    font-family:"Metrophobic";
+} 
+.ContactText-3{
+    padding: 80px 20px;  
+}
+}
