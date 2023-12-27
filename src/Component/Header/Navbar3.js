@@ -137,7 +137,8 @@ export default function NavBar() {
         style={{ backgroundColor: "black" }}
       >
         <div className="offcanvas-header" style={{ backgroundColor: "#fff" }}>
-          <h2 style={{ color: "black", fontWeight: "700" }}>InspireHub</h2>
+         <Link   data-bs-dismiss="offcanvas"
+            aria-label="Close" to='/' > <h2 style={{ color: "black", fontWeight: "700" }}>InspireHub</h2> </Link>
 
           {/* Cross button */}
           <button

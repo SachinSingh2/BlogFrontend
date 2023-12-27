@@ -1,9 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState , useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { InfoContext } from '../../Context/InfoProvider';
 import axios from 'axios';
 
 export default function CreatePost() {
+
+  const [about , setabout] = useState()
+
   const initialState = {
     title: '',
     description: '',
@@ -13,7 +16,8 @@ export default function CreatePost() {
     createdDate: '',
     pictureName:'',
     Time: new Date().toLocaleTimeString(),
-    email:''
+    email:'',
+    about:""
   };
 
   const [postData, setPostData] = useState(initialState);
@@ -31,10 +35,10 @@ export default function CreatePost() {
 
   const handleOnSavePost = async (e) => {
     e.preventDefault();
-  
     // Update postData fields
     postData.username = Account.name;
     postData.email = Account.email
+
     postData.createdDate = new Date().toLocaleDateString();
     postData.categories = location.search?.split("=")[1] || "All";
   
@@ -48,10 +52,10 @@ export default function CreatePost() {
     formData.append('file', file);
     formData.append('postData', JSON.stringify(postData));
   
-    // setloading(true)
+    setloading(true)
     try {
       // Make a single request for both file and JSON data
-      const response = await axios.post('https://blognewbackend.onrender.com/Blog/createPost', formData, {
+      const response = await axios.post('http://127.0.0.1:8000/Blog/createPost', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `${token}`,
@@ -60,7 +64,7 @@ export default function CreatePost() {
   
       const res = response.data;
       // console.log(res);
-      // setloading(false)
+      setloading(false)
       // console.log(res);
   
       if (response.msg === 'jwt expired') {
@@ -98,6 +102,33 @@ export default function CreatePost() {
     }
   };
   
+
+
+
+  // Fetching the about data
+    // Fetching the About the info of the user 
+    useEffect(()=>{
+      const getAbout = async()=>{
+  
+        const token = sessionStorage.getItem("accessToken");
+        const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+          method:"GET",
+          headers:{
+            Authorization: token,
+          }
+        })
+  
+        const res = await data.json()
+        if(res.status === "Success"){
+          setabout(res.data)
+        }
+  
+      }
+      getAbout()
+    },[])
+
+
+
 
 
   return (

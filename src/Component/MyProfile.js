@@ -3,11 +3,99 @@ import { Link } from 'react-router-dom'
 import { InfoContext } from '../Context/InfoProvider'
 
 export default function MyProfile() {
+
+      //handleOnAboutChange
+      const initialState = {
+        name:'',
+        About:"",
+        email:''
+      }
+
+   const {Account} = useContext(InfoContext)
   const [blog , setBlog] = useState()
+  const [showForm , setShowForm] = useState(false)
+  const [aboutInfo , setAboutInfo] = useState()
+  const [counter , setCounter] = useState(1)
+  const [About , setAbout] = useState(initialState)
 
-    const {Account} = useContext(InfoContext)
 
+
+
+
+    const handleOnAboutChange = (e)=>{
+      setAbout({...About , [e.target.name]:e.target.value})
+    }
+
+
+
+
+
+    // This function will learn when the submit about function will work.
+    const handleOnSubmitAbout = async (e) => {
+      e.preventDefault();
+      About.name = Account.name
+      About.email = Account.email
+
+
+      try {
+        const token = sessionStorage.getItem("accessToken");
+        const data = await fetch(`http://127.0.0.1:8000/Blog/UpdateAboutInfo/${Account.email}` , {
+          method:"PATCH",
+          headers:{
+            Authorization: token,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(About), // Convert the data to JSON format
+        })
+
+        const res = await data.json()
+        if(res.status==='Success'){
+          setShowForm(false)
+          setCounter(counter + 1)
+          // setAbout(About.About === )
+        }
+      } catch (error) {
+        console.log(error.message)
+      }
+    
+    };
+    
+
+
+    // -----------------------------------------------Function to fetch about info 
     useEffect(()=>{
+      const getAboutInfo = async()=>{
+
+        const token = sessionStorage.getItem("accessToken");
+
+        const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+          method:"GET",
+          headers:{
+            Authorization: token,
+          }
+        })
+
+        const res = await data.json()
+
+        if(res.status==="Success"){
+          setAboutInfo(res.data.about)
+          setAbout((prevAbout) => ({
+            ...prevAbout,
+            About: res.data.about,
+          }));
+        }
+      }
+      getAboutInfo()
+    },[counter])
+
+
+
+
+
+
+    // ------------------------------------------------------To fetch all the information 
+    useEffect(()=>{
+      // console.log(About)
       const getUserInfoBlog = async()=>{
 
         const token = sessionStorage.getItem("accessToken");
@@ -20,7 +108,6 @@ export default function MyProfile() {
         })
 
         const res = await data.json()
-        // console.log(res.data)
 
         if(res.status==="Success"){
           setBlog(res.data)
@@ -31,8 +118,12 @@ export default function MyProfile() {
     } ,[])
 
     // console.log(blog)
-    const render = blog && blog.map((data) => (
-      <div  className="col-md-6" key={data.id} >
+
+
+
+    // ------------------------------------------------------Mapping ocer the blog -----------------------------------------
+    const render = blog && blog.map((data , index) => (
+      <div  className="col-md-6" key={index} >
           
          <Link to={`postDetail/${data._id}`} >
            <div className="card my-2 my-5" style={{ borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
@@ -93,11 +184,36 @@ export default function MyProfile() {
               <div className="p-4 d-flex" style={{backgroundColor: "#f8f9fa"}}>
 
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-4"><p className="font-italic mx-3 mb-1">Web Developer</p></div>
-                        <div className="col-md-4"><p className="font-italic mx-3 mb-1">Lives in New York</p></div>
-                        <div className="col-md-4"><p className="font-italic mx-3 mb-1">Photographer</p></div>
+
+
+                  
+
+                  {/* About info  */}
+                  {showForm ? null :<div>
+                    <p>{aboutInfo ? aboutInfo : "No info"}</p>
+                  </div>}
+
+
+
+                  {/* Edit About */}
+                  {showForm ? 
+                  
+                  <form method='POST' action='/AboutInfo'  onSubmit={handleOnSubmitAbout}>
+
+                    <div className="aboutInputDiv">
+                    <textarea  value={About.About} style={{width:"100%"}} onChange={handleOnAboutChange} className='p-2' name="About"  ></textarea>
                     </div>
+
+                    <div  className="addBtnDiv ">
+                  <button onClick={handleOnSubmitAbout} className='btn btn-dark w-100' >Add</button>
+                    </div> 
+
+                   {!showForm ? null :  <div style={{textAlign:"end"}} className='my-1' ><button className='btn btn-dark' onClick={()=>{setShowForm(true)}} >Back</button></div>}
+
+                  </form>  : <div> <button className='btn btn-dark' onClick={()=>{setShowForm(true)}} > Edit About</button>    </div>}
+
+
+
                 </div>
               </div>
             </div>

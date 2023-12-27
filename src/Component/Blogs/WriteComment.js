@@ -19,7 +19,7 @@ export default function CommentSection() {
       }
     });
     const res = await data.json();
-    console.log(res)
+    // console.log(res)
 
     if (res.status === "Success") {
       setPost(res.comments);
@@ -29,7 +29,7 @@ export default function CommentSection() {
   useEffect(() => {
     getComments();
     console.log("Comments");
-    console.log(post);
+    // console.log(post);
   }, [count]);
 
 
@@ -59,7 +59,6 @@ export default function CommentSection() {
     e.preventDefault();
 
     const token = sessionStorage.getItem('accessToken');
-    console.log("Comment");
 
     setloading(true)
     const data = await fetch('https://blognewbackend.onrender.com/Blog/Post/Comments', {
@@ -83,9 +82,7 @@ export default function CommentSection() {
 
 // ----------------------------------------------Delete Comment
 const handleOnCommentDelete = async (ID) => {
-  console.log(ID);
   const token = sessionStorage.getItem("accessToken");
-  console.log("Delete");
   setloading(true)
   try {
     const data = await fetch(`https://blognewbackend.onrender.com/Blog/DeleteComment/${ID}`, {
@@ -96,7 +93,6 @@ const handleOnCommentDelete = async (ID) => {
     });
 
     const res = await data.json();
-    console.log(res);
     setloading(false)
 
     // Handle success or navigate if needed

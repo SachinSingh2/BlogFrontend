@@ -71,22 +71,13 @@ export default function Contact() {
 
       <div className="ContactText1">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et deleniti
-          repudiandae magni doloremque aperiam placeat rerum accusamus qui fuga
-          nam, sequi alias optio, consequatur repellendus cum dicta quae culpa
-          suscipit? Facilis aliquid iure suscipit et fuga velit provident quos
-          doloribus.
+        Thank you for reaching out to InspireHub. We value your feedback, inquiries, and the opportunity to connect with our community. Please feel free to use the contact form below or reach us through the provided contact details..
         </p>
       </div>
 
       <div className="ContactText2">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-          velit et qui ipsa quasi inventore dolores, quas nemo a cupiditate
-          perferendis laborum libero perspiciatis mollitia blanditiis?
-          Consectetur deleniti eum nulla quidem quia porro libero facere id
-          nesciunt alias rerum ipsam architecto itaque iure accusantium, eaque
-          in eius voluptas cupiditate dolorum.
+        We appreciate your thoughts on how we can improve InspireHub. Share your suggestions and ideas with us; your input is invaluable..
         </p>
       </div>
 
@@ -102,8 +93,8 @@ export default function Contact() {
 
           <div className="col-md-6">
             <h2>Contact info</h2>
-            <p>MyBlog@Gmail.com</p>
-            <p>Phone: (+1) 123 456 789</p>
+            <p>ss0985211g@gmail.com</p>
+            <p>Phone: (+91) 9821628507</p>
           </div>
         </div>
       </div>

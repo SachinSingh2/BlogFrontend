@@ -39,7 +39,7 @@ export default function Update() {
     setloading(true)
     const getInfoWithId = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/Blog/postDetail/${id}`, {
+        const response = await fetch(`https://blognewbackend.onrender.com/Blog/postDetail/${id}`, {
           method: 'GET',
           headers: {
             Authorization: token,

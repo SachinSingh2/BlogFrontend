@@ -2,18 +2,20 @@ import React, { useState } from 'react'
 import {Link, useSearchParams} from 'react-router-dom'
 import Post from '../Blogs/Post'
 import '../../css/Categories.css'
-
 export default function Categories() {
 
+  const [showAlert , setShowAlert] = useState(false)
+
     const data = [
-        {id:1 , type:'Music'},
-        {id:2 , type:'Movies'},
-        {id:3 , type:'Sports'},
-        {id:4 , type:'Tech'},
-        {id:5 , type:'Fashion'},
-        {id:6 , type:'Food'},
-        {id:7 , type:'Entertainment'},
-        {id:8 , type:'Games'},
+      {id:1 , type:'All'},
+        {id:2 , type:'Music'},
+        {id:3 , type:'Movies'},
+        {id:4 , type:'Sports'},
+        {id:5 , type:'Tech'},
+        {id:6 , type:'Fashion'},
+        {id:7 , type:'Food'},
+        {id:8 , type:'Entertainment'},
+        {id:9 , type:'Games'},
         
     ]
 
@@ -22,12 +24,18 @@ export default function Categories() {
 
 
 
+    const handleShowAlert = ()=>{
+      setShowAlert(true)
+      setTimeout(() => {
+        setShowAlert(false)
+      }, 1000);
+    }
 
 
 
   return (
     <>
-    <div style={{textAlign:"start"}} className="btnDiv container ">
+     <div style={{textAlign:"start"}} className="btnDiv container ">
       <Link to={`/create?category=${category || ''}`} >
     <button style={{ fontSize:"20px" , fontWeight:"600" , letterSpacing:"3px",backgroundColor:"#2e2e2e" ,  width:"100%",borderRadius:"3px" , color:"white" , padding:"15px 0px"}} className='my-3 btn '>
   CREATE BLOG
@@ -57,6 +65,11 @@ export default function Categories() {
   </Link>
 </div>
 
+{showAlert ? <div style={{borderRadius:"none"}} className="alert alert-success" role="alert">
+  Done 
+</div> : null}
+
+
     </th>
   </tr>
 </thead>
@@ -65,11 +78,15 @@ export default function Categories() {
   {data.map((data) => (
     <tr key={data.id}>
         <th scope="row">
-            <Link to={`/?category=${data.type}`} style={{ textDecoration: "none", color: "black", display: "block" }}>
+          
+           <Link onClick={()=>{handleShowAlert()}}  hrefLang='blogs' to={`/?category=${data.type}`}  style={{ textDecoration: "none", color: "black", display: "block" }}>
+            
                 {data.type}
-            </Link>
+            </Link> 
         </th>
+        
     </tr>
+    
 ))}
 
 
@@ -77,12 +94,14 @@ export default function Categories() {
 </table>
       </div>
 </div>
+
+
 {/* Box-1 */}
 
 
 {/* --------------------------------Box-2 */}
-<div className="col-md-9">
-<Post />
+<div id='blogs' className="col-md-9">
+<Post  />
 </div>
 
 

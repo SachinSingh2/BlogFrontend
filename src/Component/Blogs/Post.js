@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PostsCard from './PostsCard';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function Post() {
 
@@ -56,10 +57,17 @@ export default function Post() {
   // ---------------------------------------------SortBy-------------------------------------
 
   const handleOnFilter = async (sortBy) => {
+
+    
     try {
-      console.log(sortBy);
+      // console.log(sortBy);
       const token = sessionStorage.getItem("accessToken");
-      const res = await fetch(`https://blognewbackend.onrender.com/Blog/Filter/${sortBy}`, {
+      setLoading(true)
+
+      let sortUrl = `https://blognewbackend.onrender.com/Blog/Filter/${sortBy}`
+
+
+      const res = await fetch(sortUrl, {
         method: 'GET',
         headers: {
           Authorization: token,
@@ -67,6 +75,7 @@ export default function Post() {
       });
   
       const data = await res.json();
+      setLoading(false)
       // console.log(data);
   
       if (data.status === "Success") {
@@ -84,6 +93,9 @@ export default function Post() {
     <>
 
     {/* Filter Box */}
+
+
+
     <div style={{textAlign:"end"}} className="FilterBox  p-3">
 
     <div className="dropdown">
@@ -99,7 +111,10 @@ export default function Post() {
 
     </div>
 
-      {posts.length > 0 ? (
+
+
+
+    {loading ? <div style={{textAlign:"center" , fontSize:"50px" , marginTop:"150px"}} > <i className="fa-solid fa-2xl fa-spinner fa-spin" style={{color: "#111212"}}></i> </div>  :  posts.length > 0 ? (
         <div className="row">
           {posts.map((data, index) => (
             <div className="col-md-4" key={index}>
@@ -113,7 +128,9 @@ export default function Post() {
         <div style={{ display: "flex", justifyContent: "center", textAlign: "start" }}>
           <h1 className='my-5'>No Current Blogs</h1>
         </div>
-      )}
+      )} 
+
+
     </>
   );
 }

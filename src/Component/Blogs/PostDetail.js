@@ -16,6 +16,31 @@ export default function PostDetail() {
   const [post, setPost] = useState(null); // Initialize post as null
   const [loading, setLoading] = useState(true); // Introduce loading state
   const {Account} = useContext(InfoContext)
+  const [about , setabout] = useState()
+
+
+
+  // Fetching the About the info of the user 
+  useEffect(()=>{
+    const getAbout = async()=>{
+
+      const token = sessionStorage.getItem("accessToken");
+      const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+        method:"GET",
+        headers:{
+          Authorization: token,
+        }
+      })
+
+      const res = await data.json()
+      if(res.status === "Success"){
+        setabout(res.data)
+      }
+
+    }
+ 
+    getAbout()
+  },[])
 
 
 
@@ -177,11 +202,11 @@ export default function PostDetail() {
               <div className="col-md-10">
                 <h2 className="px-1 py-2 PostDetailUser">{post.username}</h2>
                 <p className="px-1 PostDetailUserAbout">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Aperiam tempore similique pariatur ullam, quaerat, vero cumque
-                  deserunt accusantium obcaecati iure perferendis saepe placeat
-                  assumenda veritatis. Ut aliquam illum nesciunt ullam impedit
-                  minima vel reprehenderit fugiat .
+
+                  
+                  {post.about}
+
+
                 </p>
 
                 <div

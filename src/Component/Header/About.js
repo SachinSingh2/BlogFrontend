@@ -36,11 +36,13 @@ export default function About() {
     </div>
 
     <div className="TextBox1 container">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi assumenda corporis qui modi doloribus dolore fugiat? Cupiditate voluptate sit laboriosam, rerum asperiores assumenda esse aperiam ad et ipsam commodi quisquam exercitationem saepe dicta. Perspiciatis natus maiores atque iusto explicabo officiis. Nemo numquam ea debitis laboriosam, autem saepe ducimus amet, repellat atque mollitia placeat laudantium praesentium impedit. Quos nemo perspiciatis earum consectetur fugit ducimus illo possimus sapiente beatae magnam amet enim accusantium dolorum quas, natus, aliquam excepturi distinctio. </p>
+      <p>
+Welcome to InspireHub, where creativity finds its voice and ideas come to life. Our platform is designed to be your digital canvas, empowering you to share your thoughts, experiences, and expertise with the world. Whether you're a seasoned writer or just getting started, our user-friendly interface makes it easy to create and organize your blogs. Dive into a world of diverse categories, ranging from lifestyle and technology to travel and personal development. Unleash your imagination, and let your unique perspective shine through. With our sorting features, navigating through the rich tapestry of content is a breeze, ensuring that readers can easily discover the topics that resonate with them. Join our vibrant community of bloggers, where every post is a new chapter waiting to be written. Explore, connect, and let your ideas find their home on Inspirehub.. </p>
     </div>
 
     <div className="TextBox2 container">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi assumenda corporis qui modi doloribus dolore fugiat? Cupiditate voluptate sit laboriosam, rerum asperiores assumenda esse aperiam ad et ipsam commodi quisquam exercitationem saepe dicta. Perspiciatis natus maiores atque iusto explicabo officiis. Nemo numquam ea debitis laboriosam, autem saepe ducimus amet, repellat atque mollitia placeat laudantium praesentium impedit. Quos nemo perspiciatis earum consectetur fugit ducimus illo possimus sapiente beatae magnam amet enim accusantium dolorum quas, natus, aliquam excepturi distinctio. </p>
+      <p>
+At InspireHub, we believe in the power of storytelling and the magic that happens when diverse voices come together. Our platform isn't just about writing; it's about creating a tapestry of narratives that reflects the richness of human experience. Whether you're sharing travel adventures, tech insights, or life lessons, you're contributing to a mosaic that inspires, informs, and entertains. With easy-to-use tools for blog creation and a range of customizable categories, you have the flexibility to express yourself authentically. Join us in building a community where every blog is a brushstroke, painting a picture of the collective wisdom, creativity, and passion that defines our digital space. Welcome to a place where your words matter, and your story is an integral part of something much larger.. </p>
     </div>
 
 
@@ -49,25 +51,25 @@ export default function About() {
         {/* 1 */}
         <div className="col-md-6">
           <h2>Who we are.</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos laborum velit et commodi temporibus excepturi amet ullam aliquid quisquam, voluptatibus delectus doloremque ex deleniti accusantium nostrum totam vitae unde, eligendi molestiae maxime cumque sint laboriosam doloribus. Aliquid impedit placeat suscipit?</p>
+          <p>What sets us apart is our commitment to fostering an inclusive environment where everyone's unique perspective is valued. We celebrate the beauty in diversity, and our platform reflects the myriad of interests, ideas, and narratives that make up the tapestry of human existence.</p>
         </div>
 
         {/* 2 */}
         <div className="col-md-6">
           <h2>Our Mission.</h2>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis cum corporis, ullam, accusamus est sequi laudantium non perspiciatis maiores id eum aut esse? Itaque, porro quam accusamus veritatis et soluta eum unde sunt architecto alias sed! Nemo nisi rerum praesentium!</p>
+          <p> Our mission is to empower individuals to amplify their voices and share their stories with the world. We believe in the transformative power of diverse perspectives, recognizing that every person has a unique narrative that contributes to the richness of human experience.</p>
         </div>
 
         {/* 3 */}
         <div className="col-md-6">
           <h2>Our Vision.</h2>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio, at ducimus quidem placeat voluptatem ratione! Voluptatum ut rem optio impedit eos odio saepe illum iusto amet laboriosam temporibus similique neque laborum deserunt qui non, omnis a doloribus quae placeat dolor?</p>
+          <p>our vision is to cultivate a global digital ecosystem that transcends geographical boundaries and unites individuals through the universal power of storytelling. We envision a platform where diverse voices converge, creating a mosaic of ideas, perspectives, and experiences that reflect the vast tapestry of human life. </p>
         </div>
 
         {/* 4 */}
         <div className="col-md-6">
-          <h2>Our Valus.</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt esse, cum, dolore nobis culpa, quasi tempore voluptatum magnam quia neque alias veritatis. Soluta quos laboriosam nesciunt eos laborum enim earum officia ducimus recusandae voluptatibus expedita aspernatur nobis, minima ullam fugiat?</p>
+          <h2>Our Values.</h2>
+          <p> Our values form the bedrock of our community, shaping the ethos that guides our every endeavor. We are committed to upholding a set of principles that foster a positive, inclusive, and enriching environment for our users. </p>
         </div>
       </div>
     </div>

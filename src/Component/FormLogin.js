@@ -23,6 +23,10 @@ export default function FormLogin({ setIsUserAuth }) {
     });
   };
 
+
+
+
+
   // Function work whenever we click on signup
   const handleOnSignUp = async (e) => {
     e.preventDefault();
@@ -30,7 +34,7 @@ export default function FormLogin({ setIsUserAuth }) {
     setLoading(true); // Set loading to true
 
     // Now we will post the data
-    const data = await fetch('https://blognewbackend.onrender.com/Blog/SignUp', {
+    const data = await fetch('http://127.0.0.1:8000/Blog/SignUp', {
       method: 'POST',
       body: JSON.stringify(form),
       headers: {
@@ -64,7 +68,12 @@ export default function FormLogin({ setIsUserAuth }) {
     }
   };
 
-  // LOGIN
+
+
+
+
+
+  //----------------------------------------------------------------------------- LOGIN
   const initialLoginInfo = {
     email: '',
     password: '',
@@ -88,7 +97,7 @@ export default function FormLogin({ setIsUserAuth }) {
 
     setLoading(true); // Set loading to true
 
-    const data = await fetch('https://blognewbackend.onrender.com/Blog/Login', {
+    const data = await fetch('http://127.0.0.1:8000/Blog/Login', {
       method: 'POST',
       body: JSON.stringify(loginInfo),
       headers: {
