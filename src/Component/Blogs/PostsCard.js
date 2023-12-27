@@ -10,7 +10,7 @@ export default function PostsCard({ data }) {
 
 
 
-      <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blognewbackend.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
+      <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://myblogserver-sabe.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
       <div className="card-body">
         <h5 className="card-title">{data.title}</h5>
         <p className="card-text">

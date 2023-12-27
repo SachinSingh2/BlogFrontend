@@ -55,7 +55,7 @@ export default function CreatePost() {
     setloading(true)
     try {
       // Make a single request for both file and JSON data
-      const response = await axios.post('http://127.0.0.1:8000/Blog/createPost', formData, {
+      const response = await axios.post('https://myblogserver-sabe.onrender.com/Blog/createPost', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `${token}`,
@@ -111,7 +111,7 @@ export default function CreatePost() {
       const getAbout = async()=>{
   
         const token = sessionStorage.getItem("accessToken");
-        const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+        const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/GetAbout/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,

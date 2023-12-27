@@ -39,7 +39,7 @@ export default function Update() {
     setloading(true)
     const getInfoWithId = async () => {
       try {
-        const response = await fetch(`https://blognewbackend.onrender.com/Blog/postDetail/${id}`, {
+        const response = await fetch(`https://myblogserver-sabe.onrender.com/Blog/postDetail/${id}`, {
           method: 'GET',
           headers: {
             Authorization: token,
@@ -82,7 +82,7 @@ export default function Update() {
     setloading(true)
     try {
       const response = await axios.put(
-        `https://blognewbackend.onrender.com/Blog/UpdatePost/${id}`,
+        `https://myblogserver-sabe.onrender.com/Blog/UpdatePost/${id}`,
         formData,
         {
           headers: {
@@ -120,7 +120,7 @@ export default function Update() {
   return (
     <>
 {loading ? <div style={{textAlign:"center"}}><i  className="fa-solid my-5 fa-6x  fa-spinner fa-spin" style={{color: "#111212"}}></i></div> :       <div className="CreatePost container text-center bg-image-CreatePost">
-        <img className="my-2" src={imgType.startsWith('FirstRefresh') ? `https://blognewbackend.onrender.com/${postData.picture.replace(/\\/g, '/')}`:postData.picture}  />
+        <img className="my-2" src={imgType.startsWith('FirstRefresh') ? `https://myblogserver-sabe.onrender.com/${postData.picture.replace(/\\/g, '/')}`:postData.picture}  />
       </div>  }
 
 

@@ -12,7 +12,7 @@ export default function CommentSection() {
 
   const getComments = async () => {
     const token = sessionStorage.getItem('accessToken');
-    const data = await fetch(`https://blognewbackend.onrender.com/Blog/Comments/${id}`, {
+    const data = await fetch(`https://myblogserver-sabe.onrender.com/Comments/${id}`, {
       method: "GET",
       headers: {
         "Authorization": `${token}`
@@ -61,7 +61,7 @@ export default function CommentSection() {
     const token = sessionStorage.getItem('accessToken');
 
     setloading(true)
-    const data = await fetch('https://blognewbackend.onrender.com/Blog/Post/Comments', {
+    const data = await fetch('https://myblogserver-sabe.onrender.com/Blog/Post/Comments', {
       method: 'POST',
       body: JSON.stringify(comment),
       headers: {
@@ -85,7 +85,7 @@ const handleOnCommentDelete = async (ID) => {
   const token = sessionStorage.getItem("accessToken");
   setloading(true)
   try {
-    const data = await fetch(`https://blognewbackend.onrender.com/Blog/DeleteComment/${ID}`, {
+    const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/DeleteComment/${ID}`, {
       method: "DELETE", // Corrected method to "DELETE"
       headers: {
         Authorization: token,

@@ -22,10 +22,10 @@ export default function Post() {
     setLoading(true)
     const fetchPosts = async (category) => {
       try {
-        let url = 'https://blognewbackend.onrender.com/Blog/Post';
+        let url = 'https://myblogserver-sabe.onrender.com/Blog/Post';
 
         if (category) {
-          url = `https://blognewbackend.onrender.com/Blog/Post?category=${category}`;
+          url = `https://myblogserver-sabe.onrender.com/Blog/Post?category=${category}`;
         }
 
         const response = await fetch(url, {
@@ -64,7 +64,7 @@ export default function Post() {
       const token = sessionStorage.getItem("accessToken");
       setLoading(true)
 
-      let sortUrl = `https://blognewbackend.onrender.com/Blog/Filter/${sortBy}`
+      let sortUrl = `https://myblogserver-sabe.onrender.com/Blog/Filter/${sortBy}`
 
 
       const res = await fetch(sortUrl, {

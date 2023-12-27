@@ -24,7 +24,7 @@ export default function PostDetail() {
     const token = sessionStorage.getItem("accessToken");
     const getInfoWithId = async () => {
       try {
-        const data = await fetch(`https://blognewbackend.onrender.com/Blog/postDetail/${id}`, {
+        const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/postDetail/${id}`, {
           method: "GET",
           headers: {
             Authorization: token,
@@ -59,7 +59,7 @@ export default function PostDetail() {
   const HandleOnDelete = async ()=>{
     setLoading(true)
     const token = sessionStorage.getItem("accessToken")
-    const data = await fetch(`https://blognewbackend.onrender.com/Blog/DeletePost/${id}`, {
+    const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/DeletePost/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: token,
@@ -93,7 +93,7 @@ export default function PostDetail() {
           <img
             style={{ height: "300px", objectFit: "cover" }}
             className="card-img-top PostDetailContainerImage"
-            src={`https://blognewbackend.onrender.com/${post.picture.replace(/\\/g, '/')}`}
+            src={`https://myblogserver-sabe.onrender.com/${post.picture.replace(/\\/g, '/')}`}
             alt="PostImages"
           />
         ) : null}

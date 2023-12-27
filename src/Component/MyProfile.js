@@ -39,7 +39,7 @@ export default function MyProfile() {
 
       try {
         const token = sessionStorage.getItem("accessToken");
-        const data = await fetch(`http://127.0.0.1:8000/Blog/UpdateAboutInfo/${Account.email}` , {
+        const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/UpdateAboutInfo/${Account.email}` , {
           method:"PATCH",
           headers:{
             Authorization: token,
@@ -68,7 +68,7 @@ export default function MyProfile() {
 
         const token = sessionStorage.getItem("accessToken");
 
-        const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+        const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/GetAbout/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,
@@ -100,7 +100,7 @@ export default function MyProfile() {
 
         const token = sessionStorage.getItem("accessToken");
 
-        const data = await fetch(`https://blognewbackend.onrender.com/Blog/GetBlogWithEmail/${Account.email}` , {
+        const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/GetBlogWithEmail/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,
@@ -130,7 +130,7 @@ export default function MyProfile() {
             <span style={{ color: "white", padding: "8px 15px", borderRadius: "15px 0 0 0", backgroundColor: "#2e2e2e" }} className="position-absolute top-0 start-50 translate-middle">
               <span>{data.categories}</span>
             </span>
-            <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blognewbackend.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
+            <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://myblogserver-sabe.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">{data.title}</h5>
               <p className="card-text">
