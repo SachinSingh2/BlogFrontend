@@ -190,7 +190,7 @@ export default function Blogs() {
 
 
     {/* Here we will render all the Blogs  */}
-    <div className="container border border-dark my-2 p-2">
+    <div className="container  my-2 p-2">
       <div className="row">
 
         {/* We will map here */}

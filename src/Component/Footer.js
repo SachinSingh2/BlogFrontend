@@ -46,6 +46,7 @@ export default function Footer() {
               className="btn btn-link btn-floating btn-lg text-dark m-1"
               href="https://www.instagram.com/"
               role="button"
+              target='blank'
               data-mdb-ripple-color="dark"
             >
               <i className="fab fa-instagram"></i>

@@ -62,7 +62,6 @@ export default function Post() {
     try {
       // console.log(sortBy);
       if(searchCategory==null){
-        console.log("null hai")
 
         const token = sessionStorage.getItem("accessToken");
         setLoading(true)
@@ -89,7 +88,6 @@ export default function Post() {
       }else{
 
         // --------------------------------if there is category 
-        console.log("null ni hai")
         const token = sessionStorage.getItem("accessToken");
         setLoading(true)
   
