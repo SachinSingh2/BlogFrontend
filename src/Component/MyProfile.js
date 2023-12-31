@@ -17,7 +17,7 @@ export default function MyProfile() {
   const [aboutInfo , setAboutInfo] = useState()
   const [counter , setCounter] = useState(1)
   const [About , setAbout] = useState(initialState)
-
+  const [loading , setloading] = useState(false)
 
 
 
@@ -39,7 +39,8 @@ export default function MyProfile() {
 
       try {
         const token = sessionStorage.getItem("accessToken");
-        const data = await fetch(`http://127.0.0.1:8000/Blog/UpdateAboutInfo/${Account.email}` , {
+        setloading(true)
+        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/UpdateAboutInfo/${Account.email}` , {
           method:"PATCH",
           headers:{
             Authorization: token,
@@ -49,6 +50,7 @@ export default function MyProfile() {
         })
 
         const res = await data.json()
+        setloading(false)
         if(res.status==='Success'){
           setShowForm(false)
           setCounter(counter + 1)
@@ -68,7 +70,8 @@ export default function MyProfile() {
 
         const token = sessionStorage.getItem("accessToken");
 
-        const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+        setloading(true)
+        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetAbout/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,
@@ -76,6 +79,7 @@ export default function MyProfile() {
         })
 
         const res = await data.json()
+        setloading(false)
         console.log(res)
 
         if(res.status==="Success"){
@@ -100,8 +104,8 @@ export default function MyProfile() {
       const getUserInfoBlog = async()=>{
 
         const token = sessionStorage.getItem("accessToken");
-
-        const data = await fetch(`http://127.0.0.1:8000/Blog/GetBlogWithEmail/${Account.email}` , {
+        setloading(true)
+        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetBlogWithEmail/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,
@@ -109,7 +113,7 @@ export default function MyProfile() {
         })
 
         const res = await data.json()
-
+        setloading(false)
         if(res.status==="Success"){
           setBlog(res.data)
         }
@@ -131,7 +135,7 @@ export default function MyProfile() {
             <span style={{ color: "white", padding: "8px 15px", borderRadius: "15px 0 0 0", backgroundColor: "#2e2e2e" }} className="position-absolute top-0 start-50 translate-middle">
               <span>{data.categories}</span>
             </span>
-            <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`http//:127.0.0.1:8000/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
+            <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blogbackend-ciog.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">{data.title}</h5>
               <p className="card-text">
@@ -206,12 +210,13 @@ export default function MyProfile() {
                     </div>
 
                     <div  className="addBtnDiv ">
-                  <button onClick={handleOnSubmitAbout} className='btn btn-dark w-100' >Add</button>
+                      {loading ? <i className="fa-solid fa-spinner fa-2x fa-spin" style={{color: "#050506" , textAlign:"center"}}></i> :<button onClick={handleOnSubmitAbout} className='btn btn-dark w-100' >Add</button> }
+                  
                     </div> 
 
                    {!showForm ? null :  <div style={{textAlign:"end"}} className='my-1' ><button className='btn btn-dark' onClick={()=>{setShowForm(true)}} >Back</button></div>}
 
-                  </form>  : <div> <button className='btn btn-dark' onClick={()=>{setShowForm(true)}} > Edit About</button>    </div>}
+                  </form>  :  <div> {loading ?<i className="fa-solid fa-spinner fa-2x fa-spin" style={{color: "#050506" , textAlign:"center"}}></i> :  <button className='btn btn-dark' onClick={()=>{setShowForm(true)}} > Edit About</button> }   </div>}
 
 
 

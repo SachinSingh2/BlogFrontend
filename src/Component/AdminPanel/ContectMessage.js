@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 export default function ContectMessage() {
   const [data , setData ] = useState()
   const [counter , setCounter] = useState(1)
+  const [loading , setLoading] = useState(false)
 
 
 
@@ -10,11 +11,13 @@ export default function ContectMessage() {
   // Fetching all the messages 
   useEffect(()=>{
     const getAllMessage = async()=>{
-      const data = await fetch('http://127.0.0.1:8000/Blog/GetAllMessages' , {
+      setLoading(true)
+      const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/GetAllMessages' , {
         method:"GET"
       })
 
       const res = await data.json()
+      setLoading(false)
       // console.log(res)
       if(res.status==="Success"){
         setData(res.data)
@@ -26,11 +29,13 @@ export default function ContectMessage() {
 
   // HandleOnDelete
   const handleOnDelete = async (id)=>{
-    const data = await fetch(`http://127.0.0.1:8000/Blog/DeleteMessage/${id}` , {
+    setLoading(true)
+    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeleteMessage/${id}` , {
       method:"DELETE"
     })
 
     const res = await data.json()
+    setLoading(false)
     if(res.status==="Success"){
       setCounter((prevCounter) => prevCounter + 1);
     }
@@ -40,9 +45,11 @@ export default function ContectMessage() {
     <>
 
       <div className="container">
+
+        
         <div className="row">
 
-        {data && data.length > 0 ? data.map((data)=>{
+          {loading ? <div style={{textAlign:"center" , fontSize:"60px" , marginTop:"50px"}}><i className="fa-solid fa-2xl fa-spinner fa-spin " style={{color: "#111212"}}></i></div> :  data && data.length > 0 ? data.map((data)=>{
           return <div className='col-md-4 border my-1 p-2' key={data._id} >
             <ul style={{listStyle:"none"}} >
               <li style={{ wordWrap: "break-word" }} > <b> Name  </b>: {data.name}</li>
@@ -53,6 +60,8 @@ export default function ContectMessage() {
             </ul>
           </div>
         }):<h1>No Messages</h1>}
+
+
 
         </div>
       </div>

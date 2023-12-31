@@ -6,7 +6,8 @@ export default function Blogs() {
 
   const [Blogs , setBlogs] = useState()
   const [counter , setCounter] = useState(1)
-  
+  const [loading , setLoading] = useState(false)
+   
 
   const data = [
     {id:1 , type:'All'},
@@ -26,12 +27,13 @@ export default function Blogs() {
   useEffect(()=>{
     try {
       const getAllBlogs = async()=>{
-        const data = await fetch('http://127.0.0.1:8000/Blog/GetAllBlogsAdmin' , {
+        setLoading(true)
+        const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/GetAllBlogsAdmin' , {
           method:"GET"
         })
 
         const res = await data.json()
-
+        setLoading(false)
         if(res.status==="Success"){
           setBlogs(res.data)
         }
@@ -47,11 +49,13 @@ export default function Blogs() {
   const handleOnFilterBlogs = async(By)=>{
     try {
       // console.log(By)
-      const data = await fetch(`http://127.0.0.1:8000/Blog/FilterBlogs/${By}` , {
+      setLoading(true)
+      const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/FilterBlogs/${By}` , {
         method:"GET"
       })
   
       const res = await data.json()
+      setLoading(false)
       // console.log(res.data)
 
       if(res.status==="Success"){
@@ -68,12 +72,13 @@ export default function Blogs() {
   // -----------Deleting the Blog--------------
   const handleOnDeleteBlogs = async (id)=>{
     
-    console.log(id)
-    const data = await fetch(`http://127.0.0.1:8000/Blog/DeleteBlogs/${id}` , {
+    setLoading(true)
+    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeleteBlogs/${id}` , {
       method:"DELETE"
     })
     
     const res = await data.json()
+    setLoading(false)
     if(res.status==="Success"){
       setCounter(counter+1)
     }
@@ -84,12 +89,13 @@ export default function Blogs() {
   // -----------------------Blog with categories---------------
   const handleOnBlogType = async (type)=>{
     console.log(type)
-    const data = await fetch(`http://127.0.0.1:8000/Blog/GetBlogWithCategory/${type}` , {
+    setLoading(true)
+    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetBlogWithCategory/${type}` , {
       method:"GET"
     })
 
     const res = await data.json()
-
+    setLoading(false)
     if(res.status==="Success"){
       setBlogs(res.data)
     }
@@ -101,11 +107,13 @@ export default function Blogs() {
     try {
       const By = e.target.value
       if(By.length>0){
-        const data = await fetch(`http://127.0.0.1:8000/Blog/GetBlogWithSearch/${By}`, {
+        setLoading(true)
+        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetBlogWithSearch/${By}`, {
           method:"GET"
         })      
   
         const res = await data.json()
+        setLoading(false)
         if(res.status==="Success"){
           setBlogs(res.data)
         }
@@ -193,8 +201,11 @@ export default function Blogs() {
     <div className="container  my-2 p-2">
       <div className="row">
 
+        
+
         {/* We will map here */}
-        {Blogs && Blogs.length > 0 ? Blogs.map((data,index)=>{
+
+        {loading ?<div style={{textAlign:"center" , fontSize:"60px" , marginTop:"50px"}}><i className="fa-solid fa-2xl fa-spinner fa-spin " style={{color: "#111212"}}></i></div> : Blogs && Blogs.length > 0 ? Blogs.map((data,index)=>{
           return <div key={data._id} data-aos="slide-up" className='col-md-4'  > 
 
 <div className="card my-2 my-5" style={{borderBottomLeftRadius:"0px"  , borderBottomRightRadius:"0px", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
@@ -204,7 +215,7 @@ export default function Blogs() {
 
 
 
-      <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`http://127.0.0.1:8000/${data.picture.replace(/\\/g, '/')}`} alt={`${data.title}  Blog Image`} />
+      <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blogbackend-ciog.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt={`${data.title}  Blog Image`} />
       <div className="card-body">
         <h5 style={{textAlign:"center"}} className="card-title">{data.title}</h5>
 
@@ -220,7 +231,9 @@ export default function Blogs() {
 
       <div  className='p-2 d-flex justify-content-between' >
        <Link to={`/update/${data._id}`} > <button  className='btn btn-dark' >Edit</button> </Link>
-         <button onClick={()=>{handleOnDeleteBlogs(data._id)}} className='btn btn-dark' >Delete</button>
+       
+       {loading ? <i className="fa-solid fa-spinner fa-spin" style={{color: "#050506"}}></i> :  <button onClick={()=>{handleOnDeleteBlogs(data._id)}} className='btn btn-dark' >Delete</button> }
+        
       </div>
 
     </div>   
@@ -229,7 +242,8 @@ export default function Blogs() {
 
 
           </div>
-        }) :<h1 className='my-4' style={{textAlign:"center"}} >No Blogs</h1>}
+        }) :<h1 className='my-4' style={{textAlign:"center"}} >No Blogs</h1> }
+
 
       </div>
     </div>

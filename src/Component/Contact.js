@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Contact() {
 
   const navigate = useNavigate()
+  const[loading , setloading] = useState(false)
 
   const initialState = {
     name: '',
@@ -25,7 +26,8 @@ export default function Contact() {
 
     const token = sessionStorage.getItem('accessToken');
 
-    const data = await fetch('http://127.0.0.1:8000/Blog/AddMessage' , {
+    setloading(true)
+    const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/AddMessage' , {
       method:"POST",
       body:JSON.stringify(contactInfo),
       headers:{
@@ -35,10 +37,11 @@ export default function Contact() {
     })
 
     const res = await data.json()
+    setloading(false)
 
     if(res.status==='Success'){
+      alert("Your message has been sent")
       navigate('/contact')
-      seterrMsg(null)
     }
 
 
@@ -165,13 +168,14 @@ export default function Contact() {
             ></textarea>
           </div>
 
+          {loading ?<i className="fa-solid fa-spinner fa-2x fa-spin" style={{color: "#050506"}}></i> : 
           <button
             onClick={handleOnSubmit}
             type="submit"
             className="btn btn-dark p-3 btn-block mb-4"
           >
             Submit
-          </button>
+          </button>}
         </form>
       </div>
     </>

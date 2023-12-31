@@ -25,7 +25,7 @@ export default function PostDetail() {
     const getAbout = async()=>{
 
       const token = sessionStorage.getItem("accessToken");
-      const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
+      const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetAbout/${Account.email}` , {
         method:"GET",
         headers:{
           Authorization: token,
@@ -49,7 +49,7 @@ export default function PostDetail() {
     const token = sessionStorage.getItem("accessToken");
     const getInfoWithId = async () => {
       try {
-        const data = await fetch(`http://127.0.0.1:8000/Blog/postDetail/${id}`, {
+        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/postDetail/${id}`, {
           method: "GET",
           headers: {
             Authorization: token,
@@ -84,7 +84,7 @@ export default function PostDetail() {
   const HandleOnDelete = async ()=>{
     setLoading(true)
     const token = sessionStorage.getItem("accessToken")
-    const data = await fetch(`http://127.0.0.1:8000/Blog/DeletePost/${id}`, {
+    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeletePost/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: token,
@@ -119,7 +119,7 @@ export default function PostDetail() {
             style={{ height: "300px", objectFit: "cover" }}
             data-aos="fade-up"
             className="card-img-top PostDetailContainerImage"
-            src={`http://127.0.0.1:8000/${post.picture.replace(/\\/g, '/')}`}
+            src={`https://blogbackend-ciog.onrender.com/${post.picture.replace(/\\/g, '/')}`}
             alt="PostImages"
           />
         ) : null}
