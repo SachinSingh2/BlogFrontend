@@ -48,7 +48,6 @@ export default function NavBar() {
             <Link to="/about">About</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/latest">Latest Blogs</Link>
-            <Link to="/mostviewd">Most Viewd</Link>
           </div>
 
           {/* <!-- Right elements --> */}
@@ -252,19 +251,7 @@ export default function NavBar() {
               aria-label="Close"
               className="nav-item mx-1"
             >
-              <Link
-                style={{
-                  fontSize: "20px",
-                  letterSpacing: "2px",
-                  fontWeight: "400",
-                  color: "white",
-                }}
-                className="nav-link active"
-                aria-current="page"
-                to={"/mostviewd"}
-              >
-                MOST VIEWD
-              </Link>
+
             </li>
 
             <hr />

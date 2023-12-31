@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function ContectMessage() {
   const [data , setData ] = useState()
-  const [counter , setCounter] = useState()
+  const [counter , setCounter] = useState(1)
 
 
 
@@ -15,6 +15,7 @@ export default function ContectMessage() {
       })
 
       const res = await data.json()
+      // console.log(res)
       if(res.status==="Success"){
         setData(res.data)
       }
@@ -31,7 +32,7 @@ export default function ContectMessage() {
 
     const res = await data.json()
     if(res.status==="Success"){
-      setCounter(counter+1)
+      setCounter((prevCounter) => prevCounter + 1);
     }
   }
   

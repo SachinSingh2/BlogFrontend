@@ -22,7 +22,6 @@ export default function Contact() {
 
   const handleOnSubmit =  async(e) => {
     e.preventDefault();
-    console.log(contactInfo);
 
     const token = sessionStorage.getItem('accessToken');
 
@@ -36,12 +35,12 @@ export default function Contact() {
     })
 
     const res = await data.json()
-    console.log(res)
 
     if(res.status==='Success'){
       navigate('/contact')
       seterrMsg(null)
     }
+
 
     if(res.status==='Failed'){
       seterrMsg(res.message)
@@ -117,6 +116,7 @@ export default function Contact() {
                   name="name"
                   placeholder="Name"
                   className="form-control p-2"
+                  required
                 />
               </div>
             </div>
@@ -130,6 +130,7 @@ export default function Contact() {
               placeholder="Email"
               name="email"
               id="form6Example5"
+              required
               className="form-control p-2"
             />
           </div>
@@ -143,6 +144,7 @@ export default function Contact() {
               name="contact"
               id="form6Example6"
               className="form-control p-2"
+              required
             />
           </div>
 
@@ -154,6 +156,7 @@ export default function Contact() {
               name="message"
               placeholder="Your Message"
               id="form6Example7"
+              required
               rows="4"
             ></textarea>
           </div>

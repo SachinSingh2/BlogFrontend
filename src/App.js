@@ -61,11 +61,6 @@ export default function App() {
               <Route path='/contact' element={<Contact />} />
             </Route> 
 
-            
-            <Route path='/mostviewd' element={<PrivateRoute isUserAuth={isUserAuth} setIsUserAuth={setIsUserAuth} />}>
-              <Route path='/mostviewd' element={<Mostviewd />} />
-            </Route>
-
              <Route path='/latest' element={<PrivateRoute isUserAuth={isUserAuth} setIsUserAuth={setIsUserAuth} />}>
               <Route path='/latest' element={<LatestBlogs />} />
             </Route> 

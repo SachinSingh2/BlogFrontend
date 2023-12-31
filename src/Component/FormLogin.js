@@ -150,13 +150,13 @@ export default function FormLogin({ setIsUserAuth }) {
           {/* <!-- Email input --> */}
           <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-    <input onChange={handleOnLoginChange} type="text" id="form3Example1c" name='email' placeholder="Your Email" className="form-control " />
+    <input onChange={handleOnLoginChange} type="email" id="form3Example1c" required name='email' placeholder="Your Email" className="form-control " />
   </div>
 
           {/* <!-- Password input --> */}
           <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-      <input onChange={handleOnLoginChange} type="password" id="form3Example4c" name='password' placeholder="Password" className="form-control " />
+      <input onChange={handleOnLoginChange} type="password" required id="form3Example4c" name='password' placeholder="Password" className="form-control " />
   </div>
 
 
@@ -204,23 +204,23 @@ export default function FormLogin({ setIsUserAuth }) {
   <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
 
-    <input onChange={handleOnChange} type="text" id="form3Example1c" name='firstname' placeholder="Your Name" className="form-control " />
+    <input onChange={handleOnChange} type="text" required id="form3Example1c" name='firstname' placeholder="Your Name" className="form-control " />
 
   </div>
 
   <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
-    <input onChange={handleOnChange} type="text" id="form3Example1c" name='email' placeholder="Your Email" className="form-control " />
+    <input onChange={handleOnChange} type="email"  required id="form3Example1c" name='email' placeholder="Your Email" className="form-control " />
   </div>
 
   <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
-      <input onChange={handleOnChange} type="password" id="form3Example4c" name='password' placeholder="Password" className="form-control " />
+      <input onChange={handleOnChange} type="password" required id="form3Example4c" name='password' placeholder="Password" className="form-control " />
   </div>
 
   <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-key fa-lg me-3 fa-fw"></i>
-      <input onChange={handleOnChange} type="password" id="form3Example4cd" name='confirmpassword' placeholder="Repeat your password" className="form-control" />
+      <input onChange={handleOnChange} type="password" required id="form3Example4cd" name='confirmpassword' placeholder="Repeat your password" className="form-control" />
   </div>
 
 
