@@ -7,16 +7,14 @@ export default function Categories() {
   const [showAlert , setShowAlert] = useState(false)
 
     const data = [
-      {id:1 , type:'All'},
-        {id:2 , type:'Music'},
-        {id:3 , type:'Movies'},
-        {id:4 , type:'Sports'},
-        {id:5 , type:'Tech'},
-        {id:6 , type:'Fashion'},
-        {id:7 , type:'Food'},
-        {id:8 , type:'Entertainment'},
-        {id:9 , type:'Games'},
-        
+        {id:1 , type:'Music'},
+        {id:2 , type:'Movies'},
+        {id:3 , type:'Sports'},
+        {id:4 , type:'Tech'},
+        {id:5 , type:'Fashion'},
+        {id:6 , type:'Food'},
+        {id:7 , type:'Entertainment'},
+        {id:8 , type:'Games'}, 
     ]
 
     const [searchParams] = useSearchParams();
@@ -73,6 +71,7 @@ export default function Categories() {
     </th>
   </tr>
 </thead>
+
   <tbody>
 
   {data.map((data) => (

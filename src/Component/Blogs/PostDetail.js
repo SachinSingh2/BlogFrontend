@@ -25,7 +25,7 @@ export default function PostDetail() {
     const getAbout = async()=>{
 
       const token = sessionStorage.getItem("accessToken");
-      const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/GetAbout/${Account.email}` , {
+      const data = await fetch(`http://127.0.0.1:8000/Blog/GetAbout/${Account.email}` , {
         method:"GET",
         headers:{
           Authorization: token,
@@ -49,7 +49,7 @@ export default function PostDetail() {
     const token = sessionStorage.getItem("accessToken");
     const getInfoWithId = async () => {
       try {
-        const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/postDetail/${id}`, {
+        const data = await fetch(`http://127.0.0.1:8000/Blog/postDetail/${id}`, {
           method: "GET",
           headers: {
             Authorization: token,
@@ -84,7 +84,7 @@ export default function PostDetail() {
   const HandleOnDelete = async ()=>{
     setLoading(true)
     const token = sessionStorage.getItem("accessToken")
-    const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/DeletePost/${id}`, {
+    const data = await fetch(`http://127.0.0.1:8000/Blog/DeletePost/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: token,
@@ -118,7 +118,7 @@ export default function PostDetail() {
           <img
             style={{ height: "300px", objectFit: "cover" }}
             className="card-img-top PostDetailContainerImage"
-            src={`https://myblogserver-sabe.onrender.com/${post.picture.replace(/\\/g, '/')}`}
+            src={`http://127.0.0.1:8000/${post.picture.replace(/\\/g, '/')}`}
             alt="PostImages"
           />
         ) : null}
@@ -168,11 +168,13 @@ export default function PostDetail() {
             {/* Edit delete */}
             <div className="my-5 container" style={{ display: "flex", justifyContent: "end" }}>
 
-            {post.username === Account.name ? <i
+            {post.username === Account.name  ? <i
               onClick={()=>{HandleOnDelete()}}
                 className="fa-solid fa-trash fa-2xl my-2 mx-4"
                 style={{ color: "#050505" }}
               ></i> : null }
+
+
 
               {post.username === Account.name ? <Link to={`/update/${post._id}`} > <i
                 className="fa-solid fa-pencil fa-2xl my-2 mx-2"

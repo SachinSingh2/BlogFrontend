@@ -10,25 +10,28 @@ export default function CommentSection() {
   const {Account} = useContext(InfoContext)
   const [loading , setloading] = useState(false)
 
+
+
+
   const getComments = async () => {
     const token = sessionStorage.getItem('accessToken');
-    const data = await fetch(`https://myblogserver-sabe.onrender.com/Comments/${id}`, {
+    const data = await fetch(`http://127.0.0.1:8000/Blog/Comments/${id}`, {
       method: "GET",
       headers: {
         "Authorization": `${token}`
       }
     });
     const res = await data.json();
-    // console.log(res)
 
     if (res.status === "Success") {
       setPost(res.comments);
     }
   };
 
+
+
   useEffect(() => {
     getComments();
-    console.log("Comments");
     // console.log(post);
   }, [count]);
 
@@ -61,7 +64,7 @@ export default function CommentSection() {
     const token = sessionStorage.getItem('accessToken');
 
     setloading(true)
-    const data = await fetch('https://myblogserver-sabe.onrender.com/Blog/Post/Comments', {
+    const data = await fetch('http://127.0.0.1:8000/Blog/Post/Comments', {
       method: 'POST',
       body: JSON.stringify(comment),
       headers: {
@@ -85,7 +88,7 @@ const handleOnCommentDelete = async (ID) => {
   const token = sessionStorage.getItem("accessToken");
   setloading(true)
   try {
-    const data = await fetch(`https://myblogserver-sabe.onrender.com/Blog/DeleteComment/${ID}`, {
+    const data = await fetch(`http://127.0.0.1:8000/Blog/DeleteComment/${ID}`, {
       method: "DELETE", // Corrected method to "DELETE"
       headers: {
         Authorization: token,
@@ -131,7 +134,7 @@ const render = post.map((data, index) => {
                 <h3>{data.username}</h3>
 
                 
-                {Account.name === data.username ? (
+                {Account.name === data.username || Account.email === 'ss0985211@gmail.com' ? (
   loading ? (
     <div style={{ textAlign: "center" }}>
       <i className="fa-solid fa-2xl fa-spinner fa-spin" style={{ color: "#111212" }}></i>

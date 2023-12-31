@@ -26,7 +26,7 @@ export default function Contact() {
 
     const token = sessionStorage.getItem('accessToken');
 
-    const data = await fetch('https://blognewbackend.onrender.com/Blog/AddMessage' , {
+    const data = await fetch('http://127.0.0.1:8000/Blog/AddMessage' , {
       method:"POST",
       body:JSON.stringify(contactInfo),
       headers:{

@@ -85,6 +85,12 @@ export default function NavBar() {
                   </Link>
                 </li>
 
+                {Account.email==="ss0985211@gmail.com" ?  <li>
+                  <Link className="dropdown-item" to='/AdminPanel'>
+                    Admin Panel
+                  </Link>
+                </li> : null}
+
                 <li>
                   <a
                     onClick={handleOnLogout}
@@ -94,6 +100,8 @@ export default function NavBar() {
                     Logout
                   </a>
                 </li>
+
+
               </ul>
             </div>
           </div>

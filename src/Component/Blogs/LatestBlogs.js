@@ -8,7 +8,7 @@ useEffect(()=>{
   const getLatestBlog =async ()=>{
     try {
       const token = sessionStorage.getItem("accessToken");
-      const res = await fetch(`https://myblogserver-sabe.onrender.com/Blog/Filter/asc`, {
+      const res = await fetch(`http://127.0.0.1:8000/Blog/Filter/asc`, {
         method: 'GET',
         headers: {
           Authorization: token,
@@ -39,7 +39,7 @@ const render = blog && blog.map((data) => (
         <span style={{ color: "white", padding: "8px 15px", borderRadius: "15px 0 0 0", backgroundColor: "#2e2e2e" }} className="position-absolute top-0 start-50 translate-middle">
           <span>{data.categories}</span>
         </span>
-        <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://myblogserver-sabe.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
+        <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`http//:127.0.0.1:8000/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">{data.title}</h5>
           <p className="card-text">

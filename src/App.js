@@ -13,7 +13,7 @@ import Navbar3 from './Component/Header/Navbar3'
 import LatestBlogs from './Component/Blogs/LatestBlogs';
 import Mostviewd from './Component/Blogs/Mostviewd';
 import MyProfile from './Component/MyProfile';
-import ProfilePostDetail from './Component/ProfilePostDetail'
+import AdminPanel from './Component/AdminPanel/AdminPanel';
 
 const PrivateRoute = ({ isUserAuth,  ...props }) => {
   return isUserAuth ? (
@@ -75,11 +75,10 @@ export default function App() {
               <Route path='/Profile' element={<MyProfile />} />
             </Route> 
 
-            <Route path='/Profile/postDetail/:id' element={<PrivateRoute isUserAuth={isUserAuth} setIsUserAuth={setIsUserAuth} />}>
-              <Route path='/Profile/postDetail/:id' element={<ProfilePostDetail />} />
-            </Route> 
 
-            
+            <Route path='/AdminPanel' element={<PrivateRoute isUserAuth={isUserAuth} setIsUserAuth={setIsUserAuth} />} >
+              <Route path='/AdminPanel' element={<AdminPanel/>} />
+            </Route>
 
 
           </Routes>
