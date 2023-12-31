@@ -136,17 +136,17 @@ export default function FormLogin({ setIsUserAuth }) {
 {showLogin ? <div className="container">
 
 
-<section className="vh-100">
+<section  className="vh-100">
   <div className="container py-5 h-100">
     <div className="row d-flex align-items-center justify-content-center h-100">
-      <div className="col-md-8 col-lg-7 col-xl-6">
+      <div data-aos="fade-right" className="col-md-8 col-lg-7 col-xl-6">
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
           className="img-fluid" alt="Phone image"/>
       </div>
       <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <h1 style={{textAlign:"center"}}>Login</h1>
         {/* OnLogin */}
-        <form onSubmit={handleOnLogin}>
+        <form data-aos="fade-left" onSubmit={handleOnLogin}>
           {/* <!-- Email input --> */}
           <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -199,7 +199,7 @@ export default function FormLogin({ setIsUserAuth }) {
 
                 <p className="text-center h1 fw-bold mb-1 mx-1 mx-md-4 ">Sign up</p>
 
-   <form style={{textAlign:"center"}} onSubmit={handleOnSignUp} className="mx-1 mx-md-4">
+   <form data-aos="fade-right" style={{textAlign:"center"}} onSubmit={handleOnSignUp} className="mx-1 mx-md-4">
 
   <div className="d-flex flex-row align-items-center mb-4">
     <i className="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -248,7 +248,7 @@ export default function FormLogin({ setIsUserAuth }) {
 
 
               </div>
-              <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+              <div data-aos="fade-left" className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
                   className="img-fluid" alt="Sample image"/>

@@ -7,7 +7,7 @@ export default function Banner() {
   return (
     <>
       {/* Jumbotron */}
-      <div className=" text-center bg-image " >
+      <div  data-aos="zoom-in" className="text-center bg-image " >
         <div className="mask">
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="text-white">

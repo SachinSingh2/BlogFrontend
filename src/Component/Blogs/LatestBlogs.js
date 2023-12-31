@@ -32,7 +32,7 @@ useEffect(()=>{
 
 // Rendering the blogs
 const render = blog && blog.map((data) => (
-  <div  className="col-md-4" key={data.id} >
+  <div data-aos="fade-up" className="col-md-4" key={data.id} >
       
      <Link to={`postDetail/${data._id}`} >
        <div className="card my-2 my-5" style={{ borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>

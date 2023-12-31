@@ -94,7 +94,7 @@ export default function Users() {
 
     {editForm ? <EditForm info={user} counter={counter} setCounter={setCounter} showEditForm={showEditForm} data={user} id={id}  /> : loading ?  <div style={{textAlign:"center" , fontSize:"60px" , marginTop:"50px"}}><i className="fa-solid fa-2xl fa-spinner fa-spin " style={{color: "#111212"}}></i></div> : user && user.length > 0 ? user.map((data) => (
   <div key={data._id}>
-    <div className="container border border-dark  p-2 my-3">
+    <div data-aos="slide-up" className="container border border-dark  p-2 my-3">
       <div className="row">
         <div style={{borderRight:"solid gray 1px" , textAlign:"center"}} className="col-md-3">
           <h3>Name</h3> <br />

@@ -55,7 +55,7 @@ export default function Contact() {
         <h1>Feel Free to Contact Us.</h1>
       </div>
 
-      <div className="Map">
+      <div data-aos="fade-up"  className="Map border">
         <div className="container">
           <iframe
             width="100%"
@@ -68,13 +68,13 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="ContactText1">
+      <div data-aos="fade-up" className="ContactText1">
         <p>
         Thank you for reaching out to InspireHub. We value your feedback, inquiries, and the opportunity to connect with our community. Please feel free to use the contact form below or reach us through the provided contact details..
         </p>
       </div>
 
-      <div className="ContactText2">
+      <div data-aos="fade-up" className="ContactText2">
         <p>
         We appreciate your thoughts on how we can improve InspireHub. Share your suggestions and ideas with us; your input is invaluable..
         </p>
@@ -82,7 +82,7 @@ export default function Contact() {
 
       <div className="container ContactText-3">
         <div className="row">
-          <div className="col-md-6">
+          <div data-aos="fade-up" className="col-md-6">
             <h2>Where to Find Us.</h2>
             <p>
               Cafe Pilkhwal <br />
@@ -90,7 +90,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="col-md-6">
+          <div data-aos="fade-up" className="col-md-6">
             <h2>Contact info</h2>
             <p>ss0985211g@gmail.com</p>
             <p>Phone: (+91) 9821628507</p>
@@ -109,6 +109,7 @@ export default function Contact() {
             <div className="col-md-12">
               <div>
                 <input
+                data-aos="fade-left"
                   value={contactInfo.name || ''}
                   onChange={handleOnChange}
                   type="text"
@@ -125,6 +126,7 @@ export default function Contact() {
           <div className=" mb-4">
             <input
               type="email"
+              data-aos="fade-left"
               value={contactInfo.email || ''}
               onChange={handleOnChange}
               placeholder="Email"
@@ -138,6 +140,7 @@ export default function Contact() {
           <div className=" mb-4">
             <input
               type="number"
+              data-aos="fade-left"
               value={contactInfo.contact || ''}
               onChange={handleOnChange}
               placeholder="Contact"
@@ -151,6 +154,7 @@ export default function Contact() {
           <div className=" mb-4">
             <textarea
               className="form-control"
+              data-aos="fade-left"
               value={contactInfo.message || ''}
               onChange={handleOnChange}
               name="message"

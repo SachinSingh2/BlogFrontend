@@ -76,10 +76,9 @@ export default function Categories() {
 
   {data.map((data) => (
     <tr key={data.id}>
-        <th scope="row">
+        <th data-aos="slide-right" scope="row">
           
            <Link onClick={()=>{handleShowAlert()}}  hrefLang='blogs' to={`/?category=${data.type}`}  style={{ textDecoration: "none", color: "black", display: "block" }}>
-            
                 {data.type}
             </Link> 
         </th>

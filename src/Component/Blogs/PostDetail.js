@@ -117,6 +117,7 @@ export default function PostDetail() {
         {post ? ( // Only render when post data is available
           <img
             style={{ height: "300px", objectFit: "cover" }}
+            data-aos="fade-up"
             className="card-img-top PostDetailContainerImage"
             src={`http://127.0.0.1:8000/${post.picture.replace(/\\/g, '/')}`}
             alt="PostImages"
@@ -133,6 +134,7 @@ export default function PostDetail() {
       </h1>
 
       <div
+        data-aos="fade-left"
         style={{
           color: "gray",
           fontFamily: "Metrophobic",
@@ -153,6 +155,7 @@ export default function PostDetail() {
       <div className="container">
         {post ? ( // Only render when post data is available
           <img
+          data-aos="fade-up"
             style={{ height: "300px", objectFit: "cover" }}
             className="card-img-top PostDetailContainerImage"
             src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

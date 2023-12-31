@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import InfoPanel from './InfoPanel'
-import '../../css/Categories.css'
+import '../../css/Admin.css'
 
 export default function AdminPanel() {
 
@@ -22,7 +22,7 @@ export default function AdminPanel() {
     <div className="container  p-2">
       <div className="row">
 
-        <div className="col-md-3 border CategoryBox  py-2 my-5">
+        <div className="col-md-3 border AdminCategoryBox  py-2 ">
         <table className="table table-hover">
         <tbody>
             {data.map((data , index)=>{
@@ -39,7 +39,7 @@ export default function AdminPanel() {
 
 
         {/* -------------------------------Info------------------------------- */}
-        <div className="col-md-9 border  p-2 my-5">
+        <div className="col-md-9 border  p-2 ">
           <InfoPanel info={info} />
         </div>
 

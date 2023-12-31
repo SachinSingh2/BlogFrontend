@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function PostsCard({ data }) {
 
   return (
-    <div className="card my-2 my-5" style={{ borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+    <div data-aos="slide-up" className="card my-2 my-5" style={{ borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
       <span style={{ color: "white", padding: "8px 15px", borderRadius: "15px 0 0 0", backgroundColor: "#2e2e2e" }} className="position-absolute top-0 start-50 translate-middle">
         <span>{data.categories}</span>
       </span>

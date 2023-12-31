@@ -195,7 +195,7 @@ export default function Blogs() {
 
         {/* We will map here */}
         {Blogs && Blogs.length > 0 ? Blogs.map((data,index)=>{
-          return <div key={data._id} className='col-md-4'  > 
+          return <div key={data._id} data-aos="slide-up" className='col-md-4'  > 
 
 <div className="card my-2 my-5" style={{borderBottomLeftRadius:"0px"  , borderBottomRightRadius:"0px", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
       <span style={{ color: "white", padding: "8px 15px", borderRadius: "15px 0 0 0", backgroundColor: "#2e2e2e" }} className="position-absolute top-0 start-50 translate-middle">
