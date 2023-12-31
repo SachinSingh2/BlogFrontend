@@ -18,7 +18,6 @@ export default function Post() {
   // This function will fetch all the blogs from the database as soon as the page refreshed means at render.
   useEffect(() => {
     const token = sessionStorage.getItem('accessToken');
-    console.log(searchCategory)
     setLoading(true)
     const fetchPosts = async (category) => {
       try {
@@ -152,21 +151,12 @@ Filter
 
 </div>
 
-          {posts.map((data, index) => (
+       {posts.map((data, index) => (
             <div className="col-md-4" key={index}>
-              <Link to={`postDetail/${data._id}`}>
                 <PostsCard data={data} /> 
-              </Link>
             </div>
           ))}
 
-{/* {posts.map((data, index) => (
-  <Link to={`postDetail/${data._id}`} key={index}>
-    <div className="col-md-4">
-      <PostsCard data={data} />
-    </div>
-  </Link>
-))} */}
 
         </div>
       ) : (
