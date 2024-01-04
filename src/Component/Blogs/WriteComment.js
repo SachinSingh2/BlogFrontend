@@ -106,10 +106,6 @@ const handleOnCommentDelete = async (ID) => {
     console.error("Error deleting comment:", error);
   }
 };
-  
-useEffect(()=>{
-  console.log(process.env.REACT_APP_EMAIL)
-},[])
 
 
 
@@ -136,7 +132,7 @@ const render = post.map((data, index) => {
                 <h3>{data.username}</h3>
 
                 
-                {Account.name === data.username || Account.email === 'ss0985211@gmail.com' ? (
+                {Account.name === data.username || Account.email === process.env.REACT_APP_EMAIL ? (
   loading ? (
     <div style={{ textAlign: "center" }}>
       <i className="fa-solid fa-2xl fa-spinner fa-spin" style={{ color: "#111212" }}></i>
