@@ -39,7 +39,7 @@ export default function Update() {
     setloading(true)
     const getInfoWithId = async () => {
       try {
-        const response = await fetch(`https://blogbackend-ciog.onrender.com/Blog/postDetail/${id}`, {
+        const response = await fetch(`https://blogserver-soqh.onrender.com/Blog/postDetail/${id}`, {
           method: 'GET',
           headers: {
             Authorization: token,
@@ -54,6 +54,7 @@ export default function Update() {
 
       } catch (error) {
         console.error('Error fetching post details:', error);
+        setloading(false)
       }
     };
 
@@ -82,7 +83,7 @@ export default function Update() {
     setloading(true)
     try {
       const response = await axios.put(
-        `https://blogbackend-ciog.onrender.com/Blog/UpdatePost/${id}`,
+        `https://blogserver-soqh.onrender.com/Blog/UpdatePost/${id}`,
         formData,
         {
           headers: {
@@ -100,6 +101,7 @@ export default function Update() {
       if (error.message.startsWith('Request failed with status code 500')) {
         alert('Please Update the image too');
       }
+      setloading(false)
       console.error('Error updating post:', error);
     }
 
@@ -120,7 +122,7 @@ export default function Update() {
   return (
     <>
 {loading ? <div style={{textAlign:"center"}}><i  className="fa-solid my-5 fa-6x  fa-spinner fa-spin" style={{color: "#111212"}}></i></div> :       <div className="CreatePost container text-center bg-image-CreatePost">
-        <img className="my-2" src={imgType.startsWith('FirstRefresh') ? `https://blogbackend-ciog.onrender.com/${postData.picture.replace(/\\/g, '/')}`:postData.picture}  />
+        <img className="my-2" src={imgType.startsWith('FirstRefresh') ? `https://blogserver-soqh.onrender.com/${postData.picture.replace(/\\/g, '/')}`:postData.picture}  />
       </div>  }
 
 

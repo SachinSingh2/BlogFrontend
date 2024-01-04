@@ -30,41 +30,44 @@ export default function FormLogin({ setIsUserAuth }) {
   // Function work whenever we click on signup
   const handleOnSignUp = async (e) => {
     e.preventDefault();
+    try {
+      setLoading(true); // Set loading to true
 
-    setLoading(true); // Set loading to true
-
-    // Now we will post the data
-    const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/SignUp', {
-      method: 'POST',
-      body: JSON.stringify(form),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
-
-    setLoading(false); // Set loading to false when the request completes
-
-    // Here we are awaiting the res which we are getting from the backend and we are the one who is sending it.
-    const res = await data.json();
-    console.log('res');
-    console.log(res);
-
-    // This condition will work when the res will get success
-    if (res.status === 'Success') {
-      setShowLogin(true);
-      setForm({});
-      setErrMsg('');
-    }
-
-    // Here we are setting up all the errors according to the response from the backend.
-    if (res.status === 'Failed') {
-      if (res.message.startsWith('user validation failed')) {
-        setErrMsg('Please fill up all the inputs');
-      } else if (res.message.startsWith('E11000 duplicate key error collection')) {
-        setErrMsg('User with this Email already exists');
-      } else {
-        setErrMsg('There is something wrong');
+      // Now we will post the data
+      const data = await fetch('https://blogserver-soqh.onrender.com/Blog/SignUp', {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: {
+          'Content-type': 'application/json',
+        },
+      });
+  
+      setLoading(false); // Set loading to false when the request completes
+  
+      // Here we are awaiting the res which we are getting from the backend and we are the one who is sending it.
+      const res = await data.json();
+      console.log('res');
+      console.log(res);
+  
+      // This condition will work when the res will get success
+      if (res.status === 'Success') {
+        setShowLogin(true);
+        setForm({});
+        setErrMsg('');
       }
+  
+      // Here we are setting up all the errors according to the response from the backend.
+      if (res.status === 'Failed') {
+        if (res.message.startsWith('user validation failed')) {
+          setErrMsg('Please fill up all the inputs');
+        } else if (res.message.startsWith('E11000 duplicate key error collection')) {
+          setErrMsg('User with this Email already exists');
+        } else {
+          setErrMsg('There is something wrong');
+        }
+      }
+    } catch (error) {
+      setLoading(false)
     }
   };
 
@@ -94,10 +97,11 @@ export default function FormLogin({ setIsUserAuth }) {
   // Function to work when the login features get clicked
   const handleOnLogin = async (e) => {
     e.preventDefault();
-
+    try {
+      
     setLoading(true); // Set loading to true
 
-    const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/Login', {
+    const data = await fetch('https://blogserver-soqh.onrender.com/Blog/Login', {
       method: 'POST',
       body: JSON.stringify(loginInfo),
       headers: {
@@ -126,6 +130,9 @@ export default function FormLogin({ setIsUserAuth }) {
     // To handle errors
     if (res.status === 'Failed') {
       setLoginError(res.message);
+    }
+    } catch (error) {
+     setLoading(false) 
     }
   };
 

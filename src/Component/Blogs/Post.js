@@ -21,10 +21,10 @@ export default function Post() {
     setLoading(true)
     const fetchPosts = async (category) => {
       try {
-        let url = 'https://blogbackend-ciog.onrender.com/Blog/Post';
+        let url = 'https://blogserver-soqh.onrender.com/Blog/Post';
 
         if (category) {
-          url = `https://blogbackend-ciog.onrender.com/Blog/Post?category=${category}`;
+          url = `https://blogserver-soqh.onrender.com/Blog/Post?category=${category}`;
         }
 
         const response = await fetch(url, {
@@ -65,7 +65,7 @@ export default function Post() {
         const token = sessionStorage.getItem("accessToken");
         setLoading(true)
   
-        let sortUrl = `https://blogbackend-ciog.onrender.com/Blog/Filter/${sortBy}`
+        let sortUrl = `https://blogserver-soqh.onrender.com/Blog/Filter/${sortBy}`
   
   
         const res = await fetch(sortUrl, {
@@ -90,7 +90,7 @@ export default function Post() {
         const token = sessionStorage.getItem("accessToken");
         setLoading(true)
   
-        let sortUrl = `https://blogbackend-ciog.onrender.com/Blog/Filter/${sortBy}/${searchCategory}`
+        let sortUrl = `https://blogserver-soqh.onrender.com/Blog/Filter/${sortBy}/${searchCategory}`
   
   
         const res = await fetch(sortUrl, {

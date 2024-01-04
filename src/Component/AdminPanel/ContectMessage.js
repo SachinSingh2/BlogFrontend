@@ -10,9 +10,11 @@ export default function ContectMessage() {
 
   // Fetching all the messages 
   useEffect(()=>{
+    try {
+      
     const getAllMessage = async()=>{
       setLoading(true)
-      const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/GetAllMessages' , {
+      const data = await fetch('https://blogserver-soqh.onrender.com/Blog/GetAllMessages' , {
         method:"GET"
       })
 
@@ -24,20 +26,27 @@ export default function ContectMessage() {
       }
     }
     getAllMessage()
+    } catch (error) {
+      setLoading(false)
+    }
   },[counter])
 
 
   // HandleOnDelete
   const handleOnDelete = async (id)=>{
-    setLoading(true)
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeleteMessage/${id}` , {
-      method:"DELETE"
-    })
-
-    const res = await data.json()
-    setLoading(false)
-    if(res.status==="Success"){
-      setCounter((prevCounter) => prevCounter + 1);
+    try {
+      setLoading(true)
+      const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/DeleteMessage/${id}` , {
+        method:"DELETE"
+      })
+  
+      const res = await data.json()
+      setLoading(false)
+      if(res.status==="Success"){
+        setCounter((prevCounter) => prevCounter + 1);
+      }
+    } catch (error) {
+      setLoading(false)
     }
   }
   

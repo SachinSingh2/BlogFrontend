@@ -15,7 +15,7 @@ export default function CommentSection() {
 
   const getComments = async () => {
     const token = sessionStorage.getItem('accessToken');
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/Comments/${id}`, {
+    const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/Comments/${id}`, {
       method: "GET",
       headers: {
         "Authorization": `${token}`
@@ -64,7 +64,7 @@ export default function CommentSection() {
     const token = sessionStorage.getItem('accessToken');
 
     setloading(true)
-    const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/Post/Comments', {
+    const data = await fetch('https://blogserver-soqh.onrender.com/Blog/Post/Comments', {
       method: 'POST',
       body: JSON.stringify(comment),
       headers: {
@@ -88,7 +88,7 @@ const handleOnCommentDelete = async (ID) => {
   const token = sessionStorage.getItem("accessToken");
   setloading(true)
   try {
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeleteComment/${ID}`, {
+    const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/DeleteComment/${ID}`, {
       method: "DELETE", // Corrected method to "DELETE"
       headers: {
         Authorization: token,
@@ -107,7 +107,9 @@ const handleOnCommentDelete = async (ID) => {
   }
 };
   
-
+useEffect(()=>{
+  console.log(process.env.REACT_APP_EMAIL)
+},[])
 
 
 

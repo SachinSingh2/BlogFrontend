@@ -28,7 +28,7 @@ export default function Blogs() {
     try {
       const getAllBlogs = async()=>{
         setLoading(true)
-        const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/GetAllBlogsAdmin' , {
+        const data = await fetch('https://blogserver-soqh.onrender.com/Blog/GetAllBlogsAdmin' , {
           method:"GET"
         })
 
@@ -42,6 +42,7 @@ export default function Blogs() {
       getAllBlogs()
     } catch (error) {
       console.log(error.message)
+      setLoading(false)
     }
   },[counter])
 
@@ -50,7 +51,7 @@ export default function Blogs() {
     try {
       // console.log(By)
       setLoading(true)
-      const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/FilterBlogs/${By}` , {
+      const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/FilterBlogs/${By}` , {
         method:"GET"
       })
   
@@ -65,15 +66,17 @@ export default function Blogs() {
 
     } catch (error) {
       console.log(error.message)
+      setLoading(false)
     }    
   }
 
 
   // -----------Deleting the Blog--------------
   const handleOnDeleteBlogs = async (id)=>{
-    
+    try {
+      
     setLoading(true)
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeleteBlogs/${id}` , {
+    const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/DeleteBlogs/${id}` , {
       method:"DELETE"
     })
     
@@ -82,22 +85,29 @@ export default function Blogs() {
     if(res.status==="Success"){
       setCounter(counter+1)
     }
+    } catch (error) {
+     setLoading(false) 
+    }
   }
 
 
 
   // -----------------------Blog with categories---------------
   const handleOnBlogType = async (type)=>{
-    console.log(type)
-    setLoading(true)
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetBlogWithCategory/${type}` , {
-      method:"GET"
-    })
-
-    const res = await data.json()
-    setLoading(false)
-    if(res.status==="Success"){
-      setBlogs(res.data)
+    try {
+      console.log(type)
+      setLoading(true)
+      const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/GetBlogWithCategory/${type}` , {
+        method:"GET"
+      })
+  
+      const res = await data.json()
+      setLoading(false)
+      if(res.status==="Success"){
+        setBlogs(res.data)
+      }
+    } catch (error) {
+      setLoading(false)
     }
   }
 
@@ -108,7 +118,7 @@ export default function Blogs() {
       const By = e.target.value
       if(By.length>0){
         setLoading(true)
-        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetBlogWithSearch/${By}`, {
+        const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/GetBlogWithSearch/${By}`, {
           method:"GET"
         })      
   
@@ -121,6 +131,7 @@ export default function Blogs() {
 
 
     } catch (error) {
+      setLoading(false)
       console.log(error.message)
     }
   }
@@ -215,7 +226,7 @@ export default function Blogs() {
 
 
 
-      <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blogbackend-ciog.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt={`${data.title}  Blog Image`} />
+      <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blogserver-soqh.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt={`${data.title}  Blog Image`} />
       <div className="card-body">
         <h5 style={{textAlign:"center"}} className="card-title">{data.title}</h5>
 

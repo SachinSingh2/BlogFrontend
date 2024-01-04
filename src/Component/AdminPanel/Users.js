@@ -16,7 +16,7 @@ export default function Users() {
       const getUser = async () => {
           try {
             setLoading(true)
-              const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/GetAllUsersAdmin', {
+              const data = await fetch('https://blogserver-soqh.onrender.com/Blog/GetAllUsersAdmin', {
                   method: "GET",
                   headers: {
                       "Content-type": "application/json",
@@ -40,7 +40,7 @@ export default function Users() {
   // ------------Function to delete 
   const handleOnDelete =  async(id)=>{
     console.log(id)
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeleteUser/${id}` , {
+    const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/DeleteUser/${id}` , {
       method:"DELETE"
     })
 
@@ -65,7 +65,7 @@ export default function Users() {
       if(By.length >0){
 
         try {
-          const data = await fetch (`https://blogbackend-ciog.onrender.com/Blog/SearchUsers/${By}` ,{
+          const data = await fetch (`https://blogserver-soqh.onrender.com/Blog/SearchUsers/${By}` ,{
             method:"GET"
           })
       
@@ -76,6 +76,7 @@ export default function Users() {
 
         } catch (error) {
           console.log(error.message)
+          setLoading(false)
         }
 
       }
@@ -149,19 +150,23 @@ const EditForm = ({ id, showEditForm, setCounter, counter, info }) => {
 
   const handleOnUpdate = async (e) => {
     e.preventDefault();
-    const updateUserInfo = await fetch(`https://blogbackend-ciog.onrender.com/Blog/UpdateUser/${id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userInfo),
-    });
-
-    const res = await updateUserInfo.json();
-
-    if (res.status === 'Success') {
-      showEditForm(false);
-      setCounter(counter + 1);
+    try {
+      const updateUserInfo = await fetch(`https://blogserver-soqh.onrender.com/Blog/UpdateUser/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userInfo),
+      });
+  
+      const res = await updateUserInfo.json();
+  
+      if (res.status === 'Success') {
+        showEditForm(false);
+        setCounter(counter + 1);
+      }
+    } catch (error) {
+      setLoading(false)
     }
   };
 

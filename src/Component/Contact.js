@@ -23,11 +23,12 @@ export default function Contact() {
 
   const handleOnSubmit =  async(e) => {
     e.preventDefault();
-
+    try {
+      
     const token = sessionStorage.getItem('accessToken');
 
     setloading(true)
-    const data = await fetch('https://blogbackend-ciog.onrender.com/Blog/AddMessage' , {
+    const data = await fetch('https://blogserver-soqh.onrender.com/Blog/AddMessage' , {
       method:"POST",
       body:JSON.stringify(contactInfo),
       headers:{
@@ -50,6 +51,9 @@ export default function Contact() {
     }
 
     setContactInfo(initialState);
+    } catch (error) {
+      setloading(false)
+    }
   };
 
   return (
@@ -107,7 +111,7 @@ export default function Contact() {
 
       <p style={{textAlign:"center" , color:"Red"}} >{errMsg === null ? null : errMsg}</p>
       <div className=" my-5 container formContainer">
-        <form action="/AddMessage" method="POST">
+        <form onSubmit={handleOnSubmit} action="/AddMessage" method="POST">
           <div className="row mb-4">
             <div className="col-md-12">
               <div>
@@ -170,7 +174,6 @@ export default function Contact() {
 
           {loading ?<i className="fa-solid fa-spinner fa-2x fa-spin" style={{color: "#050506"}}></i> : 
           <button
-            onClick={handleOnSubmit}
             type="submit"
             className="btn btn-dark p-3 btn-block mb-4"
           >

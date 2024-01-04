@@ -25,7 +25,7 @@ export default function PostDetail() {
     const getAbout = async()=>{
 
       const token = sessionStorage.getItem("accessToken");
-      const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetAbout/${Account.email}` , {
+      const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/GetAbout/${Account.email}` , {
         method:"GET",
         headers:{
           Authorization: token,
@@ -49,7 +49,7 @@ export default function PostDetail() {
     const token = sessionStorage.getItem("accessToken");
     const getInfoWithId = async () => {
       try {
-        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/postDetail/${id}`, {
+        const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/postDetail/${id}`, {
           method: "GET",
           headers: {
             Authorization: token,
@@ -82,19 +82,23 @@ export default function PostDetail() {
 
   // HandleOnDelete
   const HandleOnDelete = async ()=>{
-    setLoading(true)
-    const token = sessionStorage.getItem("accessToken")
-    const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/DeletePost/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: token,
+    try {
+      setLoading(true)
+      const token = sessionStorage.getItem("accessToken")
+      const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/DeletePost/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        }
+      })
+      setLoading(false)
+  
+      const res = await data.json()
+      if(res.status==="Success"){
+        navigate('/')
       }
-    })
-    setLoading(false)
-
-    const res = await data.json()
-    if(res.status==="Success"){
-      navigate('/')
+    } catch (error) {
+      setLoading(false)
     }
   }
 
@@ -119,7 +123,7 @@ export default function PostDetail() {
             style={{ height: "300px", objectFit: "cover" }}
             data-aos="fade-up"
             className="card-img-top PostDetailContainerImage"
-            src={`https://blogbackend-ciog.onrender.com/${post.picture.replace(/\\/g, '/')}`}
+            src={`https://blogserver-soqh.onrender.com/${post.picture.replace(/\\/g, '/')}`}
             alt="PostImages"
           />
         ) : null}

@@ -40,7 +40,7 @@ export default function MyProfile() {
       try {
         const token = sessionStorage.getItem("accessToken");
         setloading(true)
-        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/UpdateAboutInfo/${Account.email}` , {
+        const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/UpdateAboutInfo/${Account.email}` , {
           method:"PATCH",
           headers:{
             Authorization: token,
@@ -57,6 +57,7 @@ export default function MyProfile() {
           // setAbout(About.About === )
         }
       } catch (error) {
+        setloading(false)
         console.log(error.message)
       }
     
@@ -66,31 +67,35 @@ export default function MyProfile() {
 
     // -----------------------------------------------Function to fetch about info 
     useEffect(()=>{
-      const getAboutInfo = async()=>{
+      try {
+        const getAboutInfo = async()=>{
 
-        const token = sessionStorage.getItem("accessToken");
-
-        setloading(true)
-        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetAbout/${Account.email}` , {
-          method:"GET",
-          headers:{
-            Authorization: token,
+          const token = sessionStorage.getItem("accessToken");
+  
+          setloading(true)
+          const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/GetAbout/${Account.email}` , {
+            method:"GET",
+            headers:{
+              Authorization: token,
+            }
+          })
+  
+          const res = await data.json()
+          setloading(false)
+          console.log(res)
+  
+          if(res.status==="Success"){
+            setAboutInfo(res.data.about)
+            setAbout((prevAbout) => ({
+              ...prevAbout,
+              About: res.data.about,
+            }));
           }
-        })
-
-        const res = await data.json()
-        setloading(false)
-        console.log(res)
-
-        if(res.status==="Success"){
-          setAboutInfo(res.data.about)
-          setAbout((prevAbout) => ({
-            ...prevAbout,
-            About: res.data.about,
-          }));
         }
+        getAboutInfo()
+      } catch (error) {
+        setloading(false)
       }
-      getAboutInfo()
     },[counter])
 
 
@@ -100,12 +105,13 @@ export default function MyProfile() {
 
     // ------------------------------------------------------To fetch all the information 
     useEffect(()=>{
-      // console.log(About)
+      try {
+              // console.log(About)
       const getUserInfoBlog = async()=>{
 
         const token = sessionStorage.getItem("accessToken");
         setloading(true)
-        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetBlogWithEmail/${Account.email}` , {
+        const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/GetBlogWithEmail/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,
@@ -119,7 +125,9 @@ export default function MyProfile() {
         }
       }
       getUserInfoBlog()
-      
+      } catch (error) {
+        setloading(false)
+      }      
     } ,[])
 
     // console.log(blog)
@@ -135,7 +143,7 @@ export default function MyProfile() {
             <span style={{ color: "white", padding: "8px 15px", borderRadius: "15px 0 0 0", backgroundColor: "#2e2e2e" }} className="position-absolute top-0 start-50 translate-middle">
               <span>{data.categories}</span>
             </span>
-            <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blogbackend-ciog.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
+            <img style={{ borderRadius: "0px", objectFit: "cover", height: "200px" }} className="card-img-top" src={`https://blogserver-soqh.onrender.com/${data.picture.replace(/\\/g, '/')}`} alt="Card image cap" />
             <div className="card-body">
               <h5 className="card-title">{data.title}</h5>
               <p className="card-text">

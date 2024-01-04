@@ -55,7 +55,7 @@ export default function CreatePost() {
     setloading(true)
     try {
       // Make a single request for both file and JSON data
-      const response = await axios.post('https://blogbackend-ciog.onrender.com/Blog/createPost', formData, {
+      const response = await axios.post('https://blogserver-soqh.onrender.com/Blog/createPost', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': `${token}`,
@@ -78,7 +78,7 @@ export default function CreatePost() {
       }
     } catch (error) {
       console.error(error.message);
-  
+      setloading(false)
       // Display error message
       setShowErr(true);
   
@@ -111,7 +111,7 @@ export default function CreatePost() {
       const getAbout = async()=>{
   
         const token = sessionStorage.getItem("accessToken");
-        const data = await fetch(`https://blogbackend-ciog.onrender.com/Blog/GetAbout/${Account.email}` , {
+        const data = await fetch(`https://blogserver-soqh.onrender.com/Blog/GetAbout/${Account.email}` , {
           method:"GET",
           headers:{
             Authorization: token,
